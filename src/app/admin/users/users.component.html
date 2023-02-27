@@ -1,0 +1,99 @@
+<div class="container">
+  <div class="users-header">
+    <span>User_id</span>
+    <span>Email</span>
+    <span>password</span>
+    <span>Status</span>
+    <span>confirmed</span>
+    <span>Refferal_id</span>
+
+    <span>Delete</span>
+  </div>
+
+  <div class="search">
+    <input type="text" placeholder="Search user by id no" />
+  </div>
+
+  
+    
+      <div
+        class="users"
+        *ngFor="let user of Users
+            | paginate : { itemsPerPage: 5, currentPage: p }
+        "
+      >
+        <div class="users-body">
+          <span>{{ user.userId }}</span>
+          <span>{{ user.email }}</span>
+          <span>{{ user.password}}</span> 
+          <span>{{ user.type }}</span> 
+          <span>{{ user.confirmed}}</span> 
+          <span>{{ user.referralId }}</span>
+          
+          
+             <button (click)="delete(user.userId)">delete</button>
+            
+            <span
+              routerLink="/admin/users"
+              ></span>
+          
+        </div>
+      </div>
+    
+
+    <pagination-controls
+      (pageChange)="p = $event"
+      class="pagination"
+    ></pagination-controls>
+  
+
+  <div class="delete" *ngIf="close">
+    <div class="delete-item">
+      <div class="confirm">
+        <h4>Are you sure you want to delete the user.</h4>
+
+        <div class="buttons">
+          <button class="close" (click)="showDelete()">Close</button>
+          <button class="delete-btn" (click)="showDelete()">delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="mb-3 mt-5 text-center">Update User</h3>
+ 
+  <div class="form-group">
+    <input type="text" [(ngModel)]="userObj.userId" class="form-control" placeholder="Id">
+  </div>
+
+  <div class="form-group">
+    <input type="text" [(ngModel)]="userObj.email" class="form-control" placeholder="Email">
+  </div>
+
+  <div class="form-group">
+    <input type="text" [(ngModel)]="userObj.password" class="form-control" placeholder="password">
+  </div>
+
+  <div class="form-group">
+    <input type="text" [(ngModel)]="userObj.type" class="form-control" placeholder="Status">
+  </div>
+  <div class="form-group">
+    <input type="text" [(ngModel)]="userObj.confirmed" class="form-control" placeholder="Confirmed">
+  </div>
+
+  <div class="form-group">
+    <input type="text" [(ngModel)]="userObj.referralId" class="form-control" placeholder="Refferal_id">
+  </div>
+  <div class="form-group">
+    <button class="btn btn-success btn-lg btn-block" (click)="updateUser(userObj.userId, userObj)">Update User</button>
+  </div>  
+</div>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+<div class="container">
+    
+    <div class="appointment-header">
+
+        <span>Patient Name</span>
+        <span>Patient Email</span>
+        <span>Date</span>
+    </div>
+
+    <div class="appointment-body" *ngFor="
+    let item of collection | paginate: { itemsPerPage: 1, currentPage: p }
+  ">
+
+        <div class="appointment-item">
+
+            <span>Amine Abdelmaksoud</span>
+            <span>amineabdelmaksoud@gmail.com</span>
+            <span>2023/1/1</span> 
+        </div>
+
+        <div class="appointment-item">
+
+            <span>Amine Rekik</span>
+            <span>aminerekik@gmail.com</span>
+            <span>2023/17/1</span> 
+        </div>
+
+        <div class="appointment-item">
+
+            <span>Marwa Touati</span>
+            <span>MarwaTouati@gmail.com</span>
+            <span>2023/18/1</span> 
+        </div>
+
+       
+
+
+    </div>
+    <pagination-controls
+    (pageChange)="p = $event"
+    class="pagination"
+  ></pagination-controls>
+</div>

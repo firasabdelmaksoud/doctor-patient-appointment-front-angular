@@ -1,0 +1,24 @@
+<div class="container">
+
+    <h3>Add User</h3>
+
+  
+
+
+
+    <label for="">Email</label>
+    <input type="text" [(ngModel)]="userObj.email">
+    <label for="">Password</label>
+    <input type="text" [(ngModel)]="userObj.password">
+    <label for="">Status</label>
+    <input type="text" [(ngModel)]="userObj.type">
+
+    
+
+    <label for="">Confirmed</label>
+    <input type="text" [(ngModel)]="userObj.confirmed" >
+    <label for="">Refferal_id</label>
+    <input type="text" [(ngModel)]="userObj.referralId" >
+
+    <button class="btn btn-success btn-lg btn-block" (click)="addUser(userObj)">Add User</button>
+</div>

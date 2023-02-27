@@ -1,0 +1,97 @@
+<div class="container">
+    <div class="patient-header">
+      <span>first Name</span>
+      <span>Last name</span>
+      <span>Gender</span>
+      <span>Phone number</span>
+      <span>Adress</span>
+      <span> City</span>
+      <span>Date of birth</span>
+
+      <span>Add diagnosis</span>
+    </div>
+  
+    <div class="search">
+      <input type="text" placeholder="Search patient by admission no" />
+    </div>
+  
+    <div
+      class="patient-body"
+      *ngFor="
+        let item of collection | paginate: { itemsPerPage: 1, currentPage: p }
+      "
+    >
+      
+      
+    
+      <div class="patient-item">
+        <div *ngFor="let patient of Patients">
+           <span>{{ patient.patientId }}</span>
+            <span>{{ patient.user }}</span>
+            <span>{{ patient.firstname}}</span> 
+            <span>{{ patient.lastname }}</span> 
+            <span>{{ patient.gender}}</span> 
+            <span>{{ patient.phone }}</span>
+            <span>{{ patient.address }}</span> 
+            <span>{{ patient.city }}</span>
+            <span>{{ patient.dateOfBirth}}</span>           
+          <td>
+            <span class="edit btn-danger btn-sm btn" (click)="delete(patient.id)"
+              >Delete</span
+            >
+           
+          </td>
+        </div>
+      
+        <button (click)="showAddTreat()">Add</button>
+      </div>
+    </div>
+    <pagination-controls
+      (pageChange)="p = $event"
+      class="pagination"
+    ></pagination-controls>
+  </div>
+  
+  
+  <div class="add-treatment" *ngIf="close">
+  
+      <div class="add-item">
+  
+          <div class="close" >
+              <h3>Add treatment</h3>
+              <button (click)="showAddTreat()">Close</button>
+          </div>
+  
+          <div class="input-item">
+              <label for="">Name of treatment</label>
+              <input type="text">
+          </div>
+          <div class="input-item">
+              <label for="">Drug administered</label>
+              <input type="text">
+          </div>
+          <div class="input-item">
+              <label for="">Doctor name</label>
+              <input type="text">
+          </div>
+          <div class="input-item">
+              <label for="">Describe treatment</label>
+              <textarea></textarea>
+          </div>
+          <div class="input-item">
+              <label for="">status</label>
+              <input type="text">
+          </div>
+          <div class="input-item">
+              <label for="">Bill</label>
+              <input type="text">
+          </div>
+          <div class="input-item">
+              <label for="">Date</label>
+              <input type="date">
+          </div>
+  
+          <button class="submit">Submit</button>
+      </div>
+  
+  </div>

@@ -1,0 +1,64 @@
+<div class="container">
+
+    <div class="charts">
+
+        <div class="pie" [chart] ="donutCharts">
+
+        </div>
+
+        <div class="line" [chart]="lineChart">
+
+        </div>
+    </div>
+    
+    <div class="treatment-header">
+
+        <span>first name</span>
+        <span>last name</span>
+        <span>city</span>
+        <span>adress</span>
+        <span>phone</span>
+        <span>speciality</span>
+        <span>contact</span>
+    </div>
+
+
+    <div class="treatment-body" *ngFor="let item of collection | paginate: { itemsPerPage: 2, currentPage: p }">
+
+        <div class="treatment-item">
+
+        <span>omar</span>
+        <span>rekik</span>
+        <span>SFAX</span>
+        <span>route taniour</span>
+        <span>23065166</span>
+        <span>ANESTHESIOLOGY</span>
+        <button>contact</button>
+        </div>
+
+        <div class="treatment-item">
+
+            <span>ahmed</span>
+            <span>moalla</span>
+            <span>SFAX</span>
+            <span>route gremda</span>
+            <span>24370897</span>
+            <span>ANESTHESIOLOGY</span>
+            <button>contact</button>
+     </div>
+
+     <div class="treatment-item">
+
+        <span>haifa</span>
+        <span>turki</span>
+        <span>SFAX</span>
+        <span>route taniour</span>
+        <span>24370897</span>
+        <span>ANESTHESIOLOGY</span>
+        <button>contact</button>
+        </div>
+
+    </div>
+
+    <pagination-controls (pageChange)="p = $event" class="pagination"></pagination-controls>
+</div>

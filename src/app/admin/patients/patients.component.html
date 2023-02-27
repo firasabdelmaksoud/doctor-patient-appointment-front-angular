@@ -1,0 +1,109 @@
+<div class="container">
+    <div class="users-header">
+      <span>patient_id</span>
+      <span>user-id</span>
+      <span>Firstname</span>
+      <span>Last name</span>
+      <span>Gender</span>
+      <span>Phone</span>
+      <span>Address</span>
+      <span>Date of birth</span>
+      
+  
+      <span>Delete</span>
+    </div>
+  
+    <div class="search">
+      <input type="text" placeholder="Search patient by id no" />
+    </div>
+  
+    
+      
+        <div
+          class="patients"
+          *ngFor="let patient of Users
+              | paginate : { itemsPerPage: 5, currentPage: p }
+          "
+        >
+          <div class="users-body">
+            <span>{{ patient.patientId }}</span>
+            <span>{{ patient.user }}</span>
+            <span>{{ patient.firstname}}</span> 
+            <span>{{ patient.lastname }}</span> 
+            <span>{{ patient.gender}}</span> 
+            <span>{{ patient.phone }}</span>
+            <span>{{ patient.address }}</span> 
+            <span>{{ patient.dateOfBirth}}</span> 
+            <span>{{ patient.city }}</span>
+            
+            
+               <button (click)="delete(patient.patientId)">delete</button>
+              
+              <span
+                routerLink="/admin/patients"
+                ></span
+              >
+            
+          </div>
+        </div>
+      
+  
+      <pagination-controls
+        (pageChange)="p = $event"
+        class="pagination"
+      ></pagination-controls>
+    
+  
+    <div class="delete" *ngIf="close">
+      <div class="delete-item">
+        <div class="confirm">
+          <h4>Are you sure you want to delete this patient .</h4>
+  
+          <div class="buttons">
+            <button class="close" (click)="showDelete()">Close</button>
+            <button class="delete-btn" (click)="showDelete()">delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <h3 class="mb-3 mt-5 text-center">Update Patient</h3>
+   
+    <div class="form-group">
+      <input type="text" [(ngModel)]="userObj.patientId" class="form-control" placeholder=" Patient Id">
+    </div>
+  
+    <div class="form-group">
+      <input type="text" [(ngModel)]="userObj.user" class="form-control" placeholder="User Id">
+    </div>
+  
+    <div class="form-group">
+      <input type="text" [(ngModel)]="userObj.firstname" class="form-control" placeholder="First name">
+    </div>
+    <div class="form-group">
+        <input type="text" [(ngModel)]="userObj.lastname" class="form-control" placeholder="Last name">
+      </div>
+    
+      <div class="form-group">
+        <input type="text" [(ngModel)]="userObj.gender" class="form-control" placeholder="Gender">
+      </div>
+    
+      <div class="form-group">
+        <input type="text" [(ngModel)]="userObj.phone" class="form-control" placeholder="Phone">
+      </div>
+    
+    <div class="form-group">
+      <input type="text" [(ngModel)]="userObj.address" class="form-control" placeholder="Address">
+    </div>
+    <div class="form-group">
+      <input type="text" [(ngModel)]="userObj.dateOfBirth" class="form-control" placeholder="Date of birth">
+    </div>
+  
+    <div class="form-group">
+      <input type="text" [(ngModel)]="userObj.city" class="form-control" placeholder="City">
+    </div>
+    <div class="form-group">
+      <button class="btn btn-success btn-lg btn-block" (click)="updateUser(userObj.patientId, userObj)">Update Patient</button>
+    </div>  
+  </div>
+  
